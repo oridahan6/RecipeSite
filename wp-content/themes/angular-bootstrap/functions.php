@@ -118,6 +118,25 @@ function _tk_scripts() {
 
 	wp_enqueue_script( '_tk-skip-link-focus-fix', THEME_DIR_URI . '/includes/js/skip-link-focus-fix.js', array(), '20130115', true );
 
+	//Load angular
+	wp_enqueue_script('angularjs', get_template_directory_uri() .'/node_modules/angular/angular.min.js');
+	wp_enqueue_script('angularjs-route', get_template_directory_uri() .'/node_modules/angular-route/angular-route.min.js');
+	wp_enqueue_script('scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'angularjs', 'angularjs-route' ));
+
+	wp_localize_script('scripts', 'localized',
+        array(
+            // 'partials' => get_stylesheet_directory_uri() . '/wp-content/themes/angular-bootstrap/partials/'
+            'partials' => get_stylesheet_directory_uri() . '/partials/'
+            )
+    );
+
+    // use this if not working
+	// wp_localize_script('scripts', 'localized',
+ //        array(
+ //            'partials' => 'http://localhost/wordpress/recipes/wp-content/themes/angular-bootstrap/partials/'
+ //        )
+ //    );
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
