@@ -13,6 +13,8 @@
 
 get_header(); ?>
 
+<div ng-view></div>
+
 	<?php if ( have_posts() ) : ?>
 
 		<?php /* Start the Loop */ ?>
