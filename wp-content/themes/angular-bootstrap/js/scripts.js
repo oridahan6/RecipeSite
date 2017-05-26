@@ -15,7 +15,7 @@ angular.module('wp', ['ngRoute'])
     });
 })
 .controller('Main', function($scope, $http, $routeParams) {
-    $http.get('/wordpress/recipes/index.php/wp-json/wp/v2/posts').then(function(success){
+    $http.get('/index.php/wp-json/wp/v2/posts').then(function(success){
     	console.log('success',success);
         $scope.posts = success.data;
     }, function (error){
@@ -24,7 +24,7 @@ angular.module('wp', ['ngRoute'])
 })
 .controller('Content',
         ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-            $http.get('/wordpress/recipes/index.php/wp-json/wp/v2/posts').then(function(success){
+            $http.get('/index.php/wp-json/wp/v2/posts').then(function(success){
     	console.log('success',success);
         $scope.posts = success.data[0];
     }, function (error){
